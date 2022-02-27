@@ -1,0 +1,43 @@
+<% layout('layouts/boilerplate') %>
+
+<div class="container d-flex justify-content align-items-center mt-5">
+  <div class="row">
+    <div class="col-6 offset-md-3 col-xl-4 offset-xl-4">
+      <div class="card-shadow">
+        <h1>Login page</h1>
+        <form action="/login" method="POST" class="validated-form" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="username">Username</label>
+            <input
+              class="form-control"
+              type="text"
+              id="username"
+              name="username"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="password">Password</label>
+            <input
+              class="form-control"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
+          </div>
+          <button class="btn btn-success">Log In</button>
+          <button class="btn btn-warning">
+            <a href="/discussionPage">Go Back</a>
+          </button>
+        </form>
+
+        <form action="/register">
+          <h4 class="mt-3">Not a User? Register Here.</h4>
+          <button class="btn btn-dark">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
