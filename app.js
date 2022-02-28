@@ -1,3 +1,7 @@
+// if(process.env.NODE_ENV!=="production"){
+//     require('dotenv').config();
+// }
+
 const express=require('express');
 const path = require("path");
 const app=express();
@@ -7,17 +11,17 @@ const session=require('express-session');
 const flash=require('connect-flash');
 const {discussionSchema,replySchema}=require('./schemas.js');
 
+
 const passport=require('passport');
 const LocalStrategy=require('passport-local');
-
-mongoose.connect('mongodb://localhost:27017/discussionPage')
-.then(()=>{
-    console.log("Mongo Connection Open");
-})
-.catch((err=>{
-    console.log("Mongo Error");
+// mongodb://localhost:27017/discussionPage'
+const DB_URL =
+  "mongodb+srv://first-user:gBF3oOjegaHhxqvG@cluster0.glfow.mongodb.net/discussionPage?retryWrites=true&w=majority";
+mongoose.connect(DB_URL).then(()=>console.log("DB Connected"))
+.catch((err)=>{
     console.log(err);
-}))
+});
+
 
 const User=require('./models/user');
 //* Our model
@@ -141,6 +145,7 @@ app.use((err,req,res,next)=>{
  if(!err.message) err.message='Oh No, Something went Wrong!!'
  res.status(statusCode).render('error',{err})
 })
-app.listen(3000, ()=>{
-    console.log('Serving on Port 3000')
+const PORT=process.env.PORT || 3000;
+app.listen(PORT, ()=>{
+    console.log(`Serving on Port ${PORT}`)
 })
