@@ -10,7 +10,7 @@ const ejsMate = require("ejs-mate");
 const session=require('express-session');
 const flash=require('connect-flash');
 const {discussionSchema,replySchema}=require('./schemas.js');
-
+const PORT = process.env.PORT || 3000;
 
 const passport=require('passport');
 const LocalStrategy=require('passport-local');
@@ -145,7 +145,7 @@ app.use((err,req,res,next)=>{
  if(!err.message) err.message='Oh No, Something went Wrong!!'
  res.status(statusCode).render('error',{err})
 })
-const PORT=process.env.PORT || 3000;
+
 app.listen(PORT, ()=>{
     console.log(`Serving on Port ${PORT}`)
 })
