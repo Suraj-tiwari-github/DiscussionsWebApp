@@ -16,7 +16,7 @@ const passport=require('passport');
 const LocalStrategy=require('passport-local');
 // mongodb://localhost:27017/discussionPage'
 const DB_URL =
-  "mongodb+srv://first-user:gBF3oOjegaHhxqvG@cluster0.glfow.mongodb.net/discussionPage?retryWrites=true&w=majority";
+  "mongodb+srv://first-user:<password>@cluster0.glfow.mongodb.net/discussionPage?retryWrites=true&w=majority";
 mongoose.connect(DB_URL).then(()=>console.log("DB Connected"))
 .catch((err)=>{
     console.log(err);
